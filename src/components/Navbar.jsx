@@ -6,11 +6,18 @@ const Navbar = ({ setShowLogin }) => {
     const [open, setOpen] = useState(false)
     const navigate = useNavigate()
     return (
-        <div className={`flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-4 text-gray-700 border border-[#E0E0E0]
+        <div className={`flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-4 text-gray-700
     relative transition-all h-20
-    ${location.pathname === '/' && 'bg-[#E8D4B7]'}
-    ${location.pathname === '/cars' && 'bg-[#FFD8D8]'}
-    ${location.pathname === '/my-bookings' && 'bg-[#CFFFE2]'}`}>
+    ${
+      location.pathname === '/'
+        ? 'bg-[#E8D4B7]'
+        : location.pathname === '/cars'
+        ? 'bg-[#FFD8D8]'
+        : location.pathname === '/my-bookings'
+        ? 'bg-[#CFFFE2]'
+        : 'bg-[#FFC7C7]' // 👈 fallback for any other route
+    }`}
+>
             <Link to="/"><img src={assets.logo} alt="logo" className='h-fit' /></Link>
             <div className={`max-sm:fixed max-sm:h-screen max-sm:w-full max-sm:top-16 max-sm:border-t border-borderColor right-0
         flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 max-sm:p-4 transition-all duration-300 z-50
