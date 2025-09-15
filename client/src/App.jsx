@@ -11,13 +11,16 @@ import Dashboard from './pages/owner/Dashboard'
 import AddCar from './pages/owner/AddCar'
 import ManageBookings from './pages/owner/ManageBookings'
 import ManageCars from './pages/owner/ManageCars'
+import Login from './pages/owner/Login'
 
 const App = () => {
-  const [setLogin, setShowLogin] = useState(false)
+  const [showLogin, setShowLogin] = useState(false)
   const isOwnerPath = useLocation().pathname.startsWith('/owner')
   return (
     <>
-      {!isOwnerPath &&<Navbar setShowLogin={setShowLogin} />}
+    {showLogin && <Login setShowLogin={setShowLogin} />}
+      {/* Navbar - Hidden on Owner Pages */}
+      {!isOwnerPath && <Navbar setShowLogin={setShowLogin} />}
 
       {/* Routing of Pages */}
       <Routes>
@@ -32,7 +35,7 @@ const App = () => {
           <Route path='manage-bookings' element={<ManageBookings />} />
         </Route>
       </Routes>
-      {!isOwnerPath &&<Footer />}
+      {!isOwnerPath && <Footer />}
     </>
   )
 }
