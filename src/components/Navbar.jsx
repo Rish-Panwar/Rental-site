@@ -34,7 +34,7 @@ const Navbar = ({ setShowLogin }) => {
                     <img src={assets.search_icon} alt="Search" />
                 </div>
                 <div className="flex max-sm:flex-col items-start sm:items-center gap-6">
-                    <button className="cursor-pointer" onClick={() => navigate('/owner')}>Profile</button>
+                    <button className="cursor-pointer" onClick={() => navigate('/owner')}>Dashboard</button>
                     <button className="cursor-pointer px-6 py-2 bg-primary hover:bg-primary-dull transition-all
                      text-white rounded-full" onClick={() => setShowLogin(true)}>Login</button>
                 </div>

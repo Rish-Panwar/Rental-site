@@ -1,0 +1,45 @@
+import React, { useState } from 'react'
+import { assets, dummyUserData, ownerMenuLinks } from '../../assets/assets'
+import { NavLink, useLocation } from 'react-router-dom'
+
+const Sidebar = () => {
+    const user = dummyUserData
+    const location = useLocation()
+    const [image, setImage] = useState()
+
+    const updateImage = async ()=>{
+        user.image = URL.createObjectURL(image)
+        setImage('')
+    }
+  return (
+    <div className='relative min-h-screen md:flex flex-col items-center pt-8 max-w-13 md:max-w-60 w-full bg-[#FFF2EB] border-r border-gray-400 text-sm'>
+      <div className="group relative">
+        <label htmlFor="image">
+            <img src={image ? URL.createObjectURL(image) : user?.image || "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8fDA%3D"} alt="" className="h-9 md:h-14 w-9 md:w-14 rounded-full mx-auto" />
+            <input type="file" id="image" accept='image/*' hidden onChange={e=> setImage(e.target.files[0])} />
+            <div className="absolute top-0 right-0 bottom-0 left-0 bg-gray-400/10 rounded-full group-hover:flex items-center justify-center cursor-pointer">
+                <img src={assets.edit_icon} alt="icon" className="" />
+            </div>
+        </label>
+      </div>
+      {image && (
+        <button className="absolute top-0 right-0 bg-primary/10 text-primary cursor-pointer">
+            Save
+            <img src={assets.check_icon} width={13} alt="" onClick={updateImage} />
+        </button>
+      )}
+      <p className="mt-2 text-base max-md:hidden">{user?.name}</p>
+      <div className="w-full">
+        {ownerMenuLinks.map((link, index)=>(
+            <NavLink key={index} to={link.path} className={`relative flex gap-2 items-center w-full py-3 pl-4 first:mt-6 ${link.path === location.pathname ? 'bg-primary/10 text-primary' : 'text-gray-500'}`}>
+                <img src={link.path === location.pathname ? link.coloredIcon : link.icon} alt="card-icon" />
+                <span className="max-md:hidden">{link.name}</span>
+                <div className={`${link.path === location.pathname && 'bg-primary'} w-1.5 h-8 rounded-lg right-0 absolute`}></div>
+            </NavLink>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+export default Sidebar
