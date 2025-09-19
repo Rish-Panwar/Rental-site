@@ -172,7 +172,7 @@ export const ownerMenuLinks = [
 
 export const dummyUserData = {
   "_id": "6847f7cab3d8daecdb517095",
-  "name": "GreatStack",
+  "name": "John Doe",
   "email": "admin@example.com",
   "role": "owner",
   "image": "",
@@ -233,8 +233,8 @@ export const dummyCarData = [
     {
         "_id": "68009c93a3f5fc6338ea7e34",
         "owner": "67fe3467ed8a8fe17d0ba6e2",
-        "brand": "Ford",
-        "model": "Neo 6",
+        "brand": "Audi",
+        "model": "A4",
         "image": car_image4,
         "year": 2022,
         "category": "Sedan",
