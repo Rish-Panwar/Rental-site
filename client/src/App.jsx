@@ -12,15 +12,17 @@ import AddCar from './pages/owner/AddCar'
 import ManageBookings from './pages/owner/ManageBookings'
 import ManageCars from './pages/owner/ManageCars'
 import Login from './pages/owner/Login'
-
+import {Toaster} from 'react-hot-toast'
+import { useAppContext } from './context/appContext'
 const App = () => {
-  const [showLogin, setShowLogin] = useState(false)
+  const {showLogin} = useAppContext()
   const isOwnerPath = useLocation().pathname.startsWith('/owner')
   return (
     <>
-    {showLogin && <Login setShowLogin={setShowLogin} />}
+    <Toaster  />
+    {showLogin && <Login  />}
       {/* Navbar - Hidden on Owner Pages */}
-      {!isOwnerPath && <Navbar setShowLogin={setShowLogin} />}
+      {!isOwnerPath && <Navbar />}
 
       {/* Routing of Pages */}
       <Routes>
