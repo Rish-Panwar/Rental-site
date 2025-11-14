@@ -2,7 +2,8 @@ import mongoose from "mongoose";
 import "dotenv/config";
 import Car from "./models/Car.js";
 
-const img = (file) => `${process.env.CLIENT_URL}/assets/${file}`;
+const img = (file) =>
+  `https://raw.githubusercontent.com/Rish-Panwar/Rental-site/main/client/src/assets/${file}`;
 
 const cars = [
   {
