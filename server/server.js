@@ -5,6 +5,8 @@ import connectDB from './configs/db.js'
 import userRouter from './routes/UserRoutes.js'
 import ownerRouter from './routes/OwnerRoutes.js'
 import bookingRouter from './routes/BookingRoutes.js'
+import publicRouter from './routes/PublicRoutes.js'
+
 
 // Initialize express app
 const app = express()
@@ -17,6 +19,7 @@ app.use(cors())
 app.use(express.json())
 
 app.get('/', (req, res)=> res.send('Server is running...'))
+app.use("/api/public", publicRouter);
 app.use('/api/user', userRouter)
 app.use('/api/owner', ownerRouter)
 app.use('/api/bookings', bookingRouter)
